@@ -1,0 +1,67 @@
+Step1: Create 3 - Compute Instance VM (ansible, node1, node2) with Default - Service Account (SA) and Default VPC (in VPC firewall Add-fire wall rule: All-Ports – Any Where) 
+
+Step2: Login to master(ansible) and node1, node2 - VM – Instance SSH – execute the below given process  
+
+hostnamectl set-hostname ansible (master-vm)  
+
+hostnamectl set-hostname dev (node1-vm) 
+
+hostnamectl set-hostname test (node2-vm)  
+
+sudo –i 
+
+passwd root (set the password for root) 
+
+vim /etc/ssh/sshd_config  (do the below changes and save this file           
+
+(uncomment line - 34:  PermitRootLogin yes | line –  58:  PasswordAuthentication no=yes)   
+
+ systemctl restart sshd 
+
+systemctl status sshd 
+
+Step3: Login to master - VM – Instance (ansible) SSH – Install Maven-Jenkins-java17- Git and Ansible 
+
+ANSIBLE SERVER (master): Install Ansible using below script. 
+
+sudo apt update 
+
+sudo apt install software-properties-common 
+
+sudo add-apt-repository --yes --update ppa:ansible/ansible 
+
+sudo apt install ansible 
+
+Now Add the slave node IP in Inventory file 
+
+vim /etc/ansible/hosts (below line number 12 add the below give tags and Private-IP) 
+
+ 
+
+[dev] 
+
+172.31.81.244 (private IP of node1 instance) 
+
+[test] 
+
+172.31.91.255 (private IP of node2 instance) 
+
+Now generate SSH key in all 3 - VM instances using command (ssh-keygen) 
+
+ssh-keygen -- > enter 4 times 
+
+Now connect to the host node from master-VM (ansible):  
+
+ssh-copy-id root@private_IP of dev-- > yes -- > password  
+
+ssh private_IP of dev (node1-vm) 
+
+ctrl + d (exit) 
+
+ssh-copy-id root@private_IP of test -- > yes -- > password  
+
+ssh private_IP of test (node2-vm) 
+
+ctrl + d (exit) 
+
+NOTE: The commands must run according to particular-VM Instance as mentioned above 
