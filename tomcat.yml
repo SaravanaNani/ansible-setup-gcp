@@ -8,7 +8,8 @@
  
           - name: copying artifact
             copy:
-              src=/var/lib/jenkins/workspace/pipeline-1/target/NETFLIX-1.2.2.war
+              src=/var/lib/jenkins/workspace/ansible-pipeline/target/NETFLIX-1.2.2.war
               dest=/root/apache-tomcat-9.0.88/webapps
 
-              #NOTE - write the above playbook in /etc/ansible/  path
+              #NOTE - write the above playbook in /etc/ansible/  path 
+              #NOTE - ansible-pipeline - you should give your job name
