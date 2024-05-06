@@ -1,0 +1,14 @@
+- hosts: all
+  tasks:
+          - name: copying script.sh
+            copy: src=/etc/ansible/script.sh dest=/root
+ 
+          - name : running script
+            command: sh script.sh
+ 
+          - name: copying artifact
+            copy:
+              src=/var/lib/jenkins/workspace/pipeline-1/target/NETFLIX-1.2.2.war
+              dest=/root/apache-tomcat-9.0.88/webapps
+
+              #NOTE - write the above playbook in /etc/ansible/  path
