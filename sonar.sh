@@ -8,7 +8,7 @@ sudo apt update && sudo apt install openjdk-11-jdk unzip -y
 sudo mkdir -p /home/sonar
 
 cd /opt/
-wget https://binaries.sonarsource.com/?prefix=Distribution/sonarqube/sonarqube-10.6.0.92116.zip
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-10.6.0.92116.zip
 unzip sonarqube-10.6.0.92116.zip
 sudo useradd --shell /bin/bash sonar
 chown sonar:sonar /opt/sonarqube-10.6.0.92116 -R
